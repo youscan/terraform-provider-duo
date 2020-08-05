@@ -1,4 +1,4 @@
-module github.com/broamski/terraform-provider-duo
+module github.com/youscan/terraform-provider-duo
 
 go 1.14
 

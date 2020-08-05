@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/broamski/terraform-provider-duo/duo"
+	"github.com/youscan/terraform-provider-duo/duo"
 	"github.com/hashicorp/terraform/plugin"
 	"github.com/hashicorp/terraform/terraform"
 )
