@@ -107,6 +107,11 @@ func resourceUserCreate(d *schema.ResourceData, meta interface{}) error {
 
 	user := result.Response
 	d.SetId(user.UserID)
+
+	err = resourceUserEnrollCreate(d, meta)
+	if err != nil {
+		return resourceUserDelete(d, meta)
+	}
 	return resourceUserRead(d, meta)
 }
 
