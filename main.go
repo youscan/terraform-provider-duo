@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/youscan/terraform-provider-duo/duo"
 	"github.com/hashicorp/terraform/plugin"
 	"github.com/hashicorp/terraform/terraform"
+	"github.com/youscan/terraform-provider-duo/duo"
 )
 
 func main() {

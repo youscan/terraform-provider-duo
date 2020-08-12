@@ -104,14 +104,14 @@ func resourceUserCreate(d *schema.ResourceData, meta interface{}) error {
 	if result.Stat != "OK" {
 		return fmt.Errorf("could not create user %s %s", result.Stat, *result.Message)
 	}
+	err = resourceUserEnrollCreate(d, meta)
+	if err != nil {
+		_ = resourceUserDelete(d, meta)
+		return err
+	}
 
 	user := result.Response
 	d.SetId(user.UserID)
-
-	err = resourceUserEnrollCreate(d, meta)
-	if err != nil {
-		return resourceUserDelete(d, meta)
-	}
 	return resourceUserRead(d, meta)
 }
 

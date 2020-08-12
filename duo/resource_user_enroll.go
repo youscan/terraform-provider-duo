@@ -10,8 +10,7 @@ import (
 )
 
 type UserEnrollResult struct {
-	duoapi.StatResult
-	Response string
+	Stat string
 }
 
 func resourceUserEnrollCreate(d *schema.ResourceData, meta interface{}) error {
@@ -25,13 +24,13 @@ func resourceUserEnrollCreate(d *schema.ResourceData, meta interface{}) error {
 	if err != nil {
 		return err
 	}
-	result := UserEnrollResult{}
+	result := &UserEnrollResult{}
 	err = json.Unmarshal(enrollmentBody, result)
 	if err != nil {
 		return err
 	}
 	if result.Stat != "OK" {
-		return fmt.Errorf("could not enroll user %s %s", result.Stat, *result.Message)
+		return fmt.Errorf("could not enroll user %s", result.Stat)
 	}
 
 	return nil
